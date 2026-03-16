@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: kollege-backend
+    env: node
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES
+        value: 7d
+      - key: GROK_API_KEY
+        sync: false
+      - key: GROK_MODEL
+        value: grok-2-latest
+      - key: GROK_API_BASE_URL
+        value: https://api.x.ai/v1

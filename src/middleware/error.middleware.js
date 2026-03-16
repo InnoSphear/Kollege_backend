@@ -1,6 +1,13 @@
 import { ApiError } from '../utils/apiError.js';
 
-export const notFoundHandler = (_req, _res, next) => next(new ApiError(404, 'Route not found'));
+export const notFoundHandler = (req, res, _next) => {
+  console.log(`Route not found: ${req.method} ${req.url}`);
+  res.status(404).json({
+    success: false,
+    message: 'Route not found',
+    details: null,
+  });
+};
 
 export const errorHandler = (err, _req, res, _next) => {
   const status = err.status || 500;
